@@ -9,13 +9,15 @@ dist/
 web-build/
 expo-env.d.ts
 
-# Native
+# Native builds
 *.orig.*
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
+android/
+ios/
 
 # Metro
 .metro-health-check*
@@ -24,6 +26,13 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+*.log
+hs_err_pid*
+replay_pid*
+
+# IDE
+.vscode/
+.idea/
 
 # macOS
 .DS_Store
