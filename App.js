@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StatusBar, Platform, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider as PaperProvider, MD3LightTheme, configureFonts } from "react-native-paper";
+import mobileAds from "react-native-google-mobile-ads";
 
 import AppNavigator from "./src/navigation/AppNavigator";
 import { AramaProvider } from "./src/context/AramaContext";
@@ -41,6 +42,18 @@ const theme = {
 // Ana uygulama içeriği - network status için ayrı component
 const AppContent = () => {
   const { isOffline, refresh } = useNetworkStatus();
+
+  // AdMob SDK'yı başlat
+  useEffect(() => {
+    mobileAds()
+      .initialize()
+      .then((adapterStatuses) => {
+        console.log("✅ AdMob başlatıldı:", adapterStatuses);
+      })
+      .catch((error) => {
+        console.warn("⚠️ AdMob başlatma hatası:", error);
+      });
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>

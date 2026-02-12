@@ -38,6 +38,14 @@ replay_pid*
 .DS_Store
 *.pem
 
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Google Services
+google-services.json
+
 # local env files
 .env*.local
 

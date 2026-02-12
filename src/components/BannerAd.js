@@ -1,12 +1,39 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { renkler } from '../styles/GenelStiller';
+import React, { useState, useCallback } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+
+// Production banner reklam birimi ID'si
+const BANNER_AD_UNIT_ID = __DEV__
+  ? TestIds.ADAPTIVE_BANNER
+  : 'ca-app-pub-5598396618519334/2394936884';
 
 const BannerAdComponent = ({ style }) => {
-  // Expo Go test modu - mock banner
+  const [adError, setAdError] = useState(false);
+
+  const onAdFailedToLoad = useCallback((error) => {
+    console.warn('[BannerAd] Reklam yüklenemedi:', error?.message || error);
+    setAdError(true);
+  }, []);
+
+  const onAdLoaded = useCallback(() => {
+    setAdError(false);
+  }, []);
+
+  if (adError) {
+    return <View style={[styles.placeholder, style]} />;
+  }
+
   return (
-    <View style={[styles.container, styles.mockBanner, style]}>
-      <Text style={styles.mockText}>📢 Reklam Alanı</Text>
+    <View style={[styles.container, style]}>
+      <BannerAd
+        unitId={BANNER_AD_UNIT_ID}
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: true,
+        }}
+        onAdLoaded={onAdLoaded}
+        onAdFailedToLoad={onAdFailedToLoad}
+      />
     </View>
   );
 };
@@ -15,19 +42,11 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: renkler.beyaz,
-  },
-  mockBanner: {
-    backgroundColor: '#f0f0f0',
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderStyle: 'dashed',
-    height: 50,
     width: '100%',
   },
-  mockText: {
-    color: '#888',
-    fontSize: 12,
+  placeholder: {
+    height: 0,
+    width: '100%',
   },
 });
 
