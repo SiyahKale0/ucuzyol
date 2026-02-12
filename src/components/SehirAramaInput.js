@@ -21,6 +21,19 @@ const { width } = Dimensions.get('window');
 // Popüler şehirler
 const POPULER_SEHIRLER = ['İstanbul', 'Ankara', 'İzmir', 'Antalya', 'Bursa', 'Adana'];
 
+// Türkçe karakter normalizasyonu (İ↔i, I↔ı, Ş↔ş, Ç↔ç, Ğ↔ğ, Ü↔ü, Ö↔ö)
+const turkceNormalize = (str) => {
+  return str
+    .replace(/İ/g, 'i')
+    .replace(/I/g, 'ı')
+    .replace(/Ş/g, 'ş')
+    .replace(/Ç/g, 'ç')
+    .replace(/Ğ/g, 'ğ')
+    .replace(/Ü/g, 'ü')
+    .replace(/Ö/g, 'ö')
+    .toLowerCase();
+};
+
 const SehirAramaInput = ({ label, seciliSehir, onSehirSec }) => {
   const [aramaMetni, setAramaMetni] = useState('');
   const [listeGoster, setListeGoster] = useState(false);
@@ -32,13 +45,14 @@ const SehirAramaInput = ({ label, seciliSehir, onSehirSec }) => {
   const inputFocus = useRef(new Animated.Value(0)).current;
   const inputRef = useRef(null);
 
-  // Filtrelenmiş şehirler - useMemo ile optimize
+  // Filtrelenmiş şehirler - useMemo ile optimize (Türkçe karakter desteği)
   const filtrelenmisSehirler = useMemo(() => {
     if (debouncedArama.length === 0) {
       return [];
     }
+    const normalizedArama = turkceNormalize(debouncedArama);
     return sehirListesi.filter((sehir) =>
-      sehir.toLowerCase().includes(debouncedArama.toLowerCase())
+      turkceNormalize(sehir).includes(normalizedArama)
     ).slice(0, 10); // Max 10 sonuç göster
   }, [debouncedArama]);
 
