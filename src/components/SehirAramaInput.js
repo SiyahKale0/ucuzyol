@@ -23,15 +23,23 @@ const POPULER_SEHIRLER = ['İstanbul', 'Ankara', 'İzmir', 'Antalya', 'Bursa', '
 
 // Türkçe karakter normalizasyonu (İ↔i, I↔ı, Ş↔ş, Ç↔ç, Ğ↔ğ, Ü↔ü, Ö↔ö)
 const turkceNormalize = (str) => {
+  if (!str) return '';
   return str
     .replace(/İ/g, 'i')
     .replace(/I/g, 'ı')
+    .replace(/i/g, 'i')
+    .replace(/ı/g, 'ı')
     .replace(/Ş/g, 'ş')
+    .replace(/ş/g, 'ş')
     .replace(/Ç/g, 'ç')
+    .replace(/ç/g, 'ç')
     .replace(/Ğ/g, 'ğ')
+    .replace(/ğ/g, 'ğ')
     .replace(/Ü/g, 'ü')
+    .replace(/ü/g, 'ü')
     .replace(/Ö/g, 'ö')
-    .toLowerCase();
+    .replace(/ö/g, 'ö')
+    .toLocaleLowerCase('tr-TR');
 };
 
 const SehirAramaInput = ({ label, seciliSehir, onSehirSec }) => {
