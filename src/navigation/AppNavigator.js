@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Platform, View, StyleSheet } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
+import { Feather } from "@expo/vector-icons";
 import AramaEkrani from "../screens/AramaEkrani";
 import SonuclarEkrani from "../screens/SonuclarEkrani";
 import { renkler } from "../styles/GenelStiller";
@@ -64,10 +64,6 @@ const AppNavigator = () => {
         tabBarItemStyle: {
           paddingTop: 4,
         },
-        // Geçiş animasyonları
-        ...(Platform.OS === 'android' && {
-          animationEnabled: true,
-        }),
       }}
     >
       <Tab.Screen

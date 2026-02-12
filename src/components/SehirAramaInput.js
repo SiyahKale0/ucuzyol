@@ -11,8 +11,7 @@ import {
   Platform,
 } from 'react-native';
 import { Surface } from 'react-native-paper';
-import { LinearGradient } from 'expo-linear-gradient';
-import Feather from 'react-native-vector-icons/Feather';
+import { Feather } from '@expo/vector-icons';
 import { sehirListesi } from '../constants/Sehirler';
 import { renkler } from '../styles/GenelStiller';
 import { useDebounce } from '../hooks/useDebounce';
@@ -71,7 +70,7 @@ const SehirAramaInput = ({ label, seciliSehir, onSehirSec }) => {
     Animated.timing(inputFocus, {
       toValue: 1,
       duration: 200,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }, [inputFocus]);
 
@@ -79,7 +78,7 @@ const SehirAramaInput = ({ label, seciliSehir, onSehirSec }) => {
     Animated.timing(inputFocus, {
       toValue: 0,
       duration: 200,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }, [inputFocus]);
 
@@ -179,7 +178,7 @@ const SehirAramaInput = ({ label, seciliSehir, onSehirSec }) => {
             },
           ]}
         >
-          <Surface style={styles.dropdown} elevation={8}>
+          <Surface style={styles.dropdown} elevation={5}>
             <ScrollView
               nestedScrollEnabled={true}
               keyboardShouldPersistTaps="handled"

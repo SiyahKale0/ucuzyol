@@ -13,8 +13,7 @@ import {
   Platform,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Feather from "react-native-vector-icons/Feather";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useArama } from "../context/AramaContext";
 import BiletKarti from "../components/BiletKarti";
 import BannerAd from "../components/BannerAd";

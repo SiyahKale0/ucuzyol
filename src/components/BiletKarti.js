@@ -1,7 +1,6 @@
 import React, { memo, useCallback } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { renkler } from "../styles/GenelStiller";
 
 // Saat string'inden dakika hesapla (ör: "14:30" -> 870)

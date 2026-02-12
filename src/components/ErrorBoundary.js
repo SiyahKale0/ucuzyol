@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
+import { Feather } from '@expo/vector-icons';
 import { renkler } from '../styles/GenelStiller';
 
 class ErrorBoundary extends React.Component {

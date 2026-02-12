@@ -13,8 +13,7 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import Feather from "react-native-vector-icons/Feather";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useArama, ARAMA_MODLARI } from "../context/AramaContext";
 import { enUcuzRotalariBulApi, cokluBacakliRotaBulApi } from "../api/apiServisleri";
 import { renkler } from "../styles/GenelStiller";
