@@ -1,10 +1,10 @@
 import { useCallback, useState, useEffect, useRef } from "react";
 import { InterstitialAd, AdEventType, TestIds } from "react-native-google-mobile-ads";
 
-// OtobusGecis reklam birimi ID'si
+// Geçiş reklamı birimi ID'si
 const INTERSTITIAL_AD_UNIT_ID = __DEV__
   ? TestIds.INTERSTITIAL
-  : "ca-app-pub-5598396618519334/2306710505";
+  : "ca-app-pub-1312596055663310/1889163982";
 
 export const useInterstitialAd = () => {
   const [loaded, setLoaded] = useState(false);

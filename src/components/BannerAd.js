@@ -2,10 +2,10 @@ import React, { useState, useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
-// OtobusBanner reklam birimi ID'si
+// Banner reklam birimi ID'si
 const BANNER_AD_UNIT_ID = __DEV__
   ? TestIds.ADAPTIVE_BANNER
-  : 'ca-app-pub-5598396618519334/2394936884';
+  : 'ca-app-pub-1312596055663310/9209358606';
 
 const BannerAdComponent = ({ style }) => {
   const [adError, setAdError] = useState(false);

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ucuzyol",
+    "name": "Ucuz Yol",
     "slug": "ucuzyol",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,7 +19,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.siyahkale.ucuzyol"
+      "package": "com.blix.ucuzyol"
     },
     "web": {
       "favicon": "./assets/favicon.png"
